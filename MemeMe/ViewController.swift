@@ -13,22 +13,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : "-2.0"
         ]
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .Center
-        topTextField.delegate = self
-
+        for field in [topTextField, bottomTextField] {
+            field.defaultTextAttributes = memeTextAttributes
+            field.textAlignment = .Center
+            field.delegate = self
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +58,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        var s = textField.text as NSString!
+        s = s.stringByReplacingCharactersInRange(range, withString: string)
+        textField.text = s.uppercaseString
+        return false
     }
     
     

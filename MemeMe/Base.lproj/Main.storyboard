@@ -26,6 +26,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-CU-hJ1" userLabel="bottomTextField">
+                                <rect key="frame" x="32" y="511" width="536" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="300" translatesAutoresizingMaskIntoConstraints="NO" id="nsc-nG-duL" userLabel="northToolbar">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
@@ -56,18 +61,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="hEi-jC-ZLl" secondAttribute="trailing" constant="16" id="0ke-QN-XHD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kSU-CU-hJ1" secondAttribute="trailing" constant="16" id="FNJ-Z8-scJ"/>
                             <constraint firstItem="oAb-RP-LpU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Qg7-nz-W8c"/>
+                            <constraint firstItem="kSU-CU-hJ1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="16" id="V3f-mu-Lg0"/>
+                            <constraint firstAttribute="centerX" secondItem="kSU-CU-hJ1" secondAttribute="centerX" id="VDE-3p-TQK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oAb-RP-LpU" secondAttribute="trailing" constant="-16" id="WsM-jb-bua"/>
                             <constraint firstItem="hEi-jC-ZLl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="16" id="XJn-xp-c1a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nsc-nG-duL" secondAttribute="trailing" constant="-16" id="bRO-Zb-WFX"/>
                             <constraint firstItem="nsc-nG-duL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="dJQ-TM-wtr"/>
                             <constraint firstItem="hEi-jC-ZLl" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" constant="28" id="eSI-UK-BgA"/>
+                            <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="kSU-CU-hJ1" secondAttribute="bottom" constant="28" id="jQL-NT-dAQ"/>
                             <constraint firstItem="nsc-nG-duL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="poV-4J-iiO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oAb-RP-LpU" secondAttribute="bottom" id="qB1-4E-zlQ"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="bottomTextField" destination="kSU-CU-hJ1" id="tLR-D6-auN"/>
                         <outlet property="cameraButton" destination="QCR-n1-Iko" id="usA-ZL-2PU"/>
                         <outlet property="imageView" destination="cf2-Ms-iA6" id="5a4-dk-abg"/>
                         <outlet property="topTextField" destination="hEi-jC-ZLl" id="twY-MY-M58"/>
