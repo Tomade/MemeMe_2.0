@@ -36,6 +36,7 @@
 		33A915401B89124D000CAACB /* MemeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A915451B89124D000CAACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A915461B89124D000CAACB /* MemeMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTests.swift; sourceTree = "<group>"; };
+		33A915501B8914C1000CAACB /* Rubric.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Rubric.pdf; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +81,7 @@
 				33A915301B89124D000CAACB /* AppDelegate.swift */,
 				33A915321B89124D000CAACB /* ViewController.swift */,
 				33A915341B89124D000CAACB /* Main.storyboard */,
+				33A915501B8914C1000CAACB /* Rubric.pdf */,
 				33A915371B89124D000CAACB /* Images.xcassets */,
 				33A915391B89124D000CAACB /* LaunchScreen.xib */,
 				33A9152E1B89124D000CAACB /* Supporting Files */,
