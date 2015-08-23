@@ -17,11 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-Ms-iA6">
-                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-Ms-iA6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsc-nG-duL" userLabel="northToolbar">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEi-jC-ZLl" userLabel="topTextField">
+                                <rect key="frame" x="32" y="72" width="536" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="300" translatesAutoresizingMaskIntoConstraints="NO" id="nsc-nG-duL" userLabel="northToolbar">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="ZR8-7G-qKu"/>
@@ -29,7 +34,7 @@
                                     <barButtonItem title="Cancel" id="LP2-uf-Tsl"/>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAb-RP-LpU" userLabel="southToolbar">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="oAb-RP-LpU" userLabel="southToolbar">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6qb-vg-mwQ"/>
@@ -50,14 +55,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cf2-Ms-iA6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="8EJ-iF-mEu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cf2-Ms-iA6" secondAttribute="trailing" constant="-16" id="LKc-gN-qea"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hEi-jC-ZLl" secondAttribute="trailing" constant="16" id="0ke-QN-XHD"/>
                             <constraint firstItem="oAb-RP-LpU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Qg7-nz-W8c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oAb-RP-LpU" secondAttribute="trailing" constant="-16" id="WsM-jb-bua"/>
+                            <constraint firstItem="hEi-jC-ZLl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="16" id="XJn-xp-c1a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nsc-nG-duL" secondAttribute="trailing" constant="-16" id="bRO-Zb-WFX"/>
                             <constraint firstItem="nsc-nG-duL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="dJQ-TM-wtr"/>
-                            <constraint firstItem="cf2-Ms-iA6" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" id="fxJ-0z-hXp"/>
-                            <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="cf2-Ms-iA6" secondAttribute="bottom" id="luB-K8-76s"/>
+                            <constraint firstItem="hEi-jC-ZLl" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" constant="28" id="eSI-UK-BgA"/>
                             <constraint firstItem="nsc-nG-duL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="poV-4J-iiO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oAb-RP-LpU" secondAttribute="bottom" id="qB1-4E-zlQ"/>
                         </constraints>
@@ -66,6 +70,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="QCR-n1-Iko" id="usA-ZL-2PU"/>
                         <outlet property="imageView" destination="cf2-Ms-iA6" id="5a4-dk-abg"/>
+                        <outlet property="topTextField" destination="hEi-jC-ZLl" id="twY-MY-M58"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
