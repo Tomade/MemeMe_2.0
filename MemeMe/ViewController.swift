@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct Meme {
+    var topText: String
+    var bottomText: String
+    var image: UIImage
+    var memedImage: UIImage
+}
+
 class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
@@ -20,6 +27,8 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
 
+    @IBOutlet weak var northBar: UIToolbar!
+    @IBOutlet weak var southBar: UIToolbar!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var lastZoomScale: CGFloat = -1
@@ -43,16 +52,17 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         scrollView.delegate = self
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        updateZoom()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         self.subscribeToKeyboardNotifications()
     }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        updateZoom()
+    }
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -68,13 +78,23 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         return true
     }
     
+    // handle orientation transitions
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        coordinator.animateAlongsideTransition(nil, completion: { _ in
+            self.updateZoom()
+            self.updateConstraints()
+        })
+    }
+    
+    
     func updateConstraints() {
         if let image = imageView.image {
             let imageWidth = image.size.width
             let imageHeight = image.size.height
             
-            let viewWidth = view.bounds.size.width
-            let viewHeight = view.bounds.size.height
+            let viewWidth = scrollView.bounds.size.width
+            let viewHeight = scrollView.bounds.size.height
             
             // center image if it is smaller than screen
             var hPadding = (viewWidth - scrollView.zoomScale * imageWidth) / 2
@@ -97,8 +117,8 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     // Zoom to show as much image as possible unless image is smaller than screen
     func updateZoom() {
         if let image = imageView.image {
-            var minZoom = min(view.bounds.size.width / image.size.width,
-                view.bounds.size.height / image.size.height)
+            var minZoom = min(scrollView.bounds.size.width / image.size.width,
+                scrollView.bounds.size.height / image.size.height)
             
             if minZoom > 1 { minZoom = 1 }
             
@@ -112,12 +132,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         }
     }
 
-    
-
-    
-    // UIScrollViewDelegate
-    // -----------------------
-    
+    // MARK: UIScrolViewDelegate methods
     func scrollViewDidZoom(scrollView: UIScrollView) {
         updateConstraints()
     }
@@ -126,9 +141,6 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         return imageView
     }
 
-    
-    
-    
 
     // MARK: Textfield delegate methods
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -172,6 +184,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = img
+            imageView.sizeToFit()
             updateZoom()
             self.dismissViewControllerAnimated(true, completion: nil)
         }
@@ -209,8 +222,41 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.CGRectValue().height
+        // discount bottom bar height, as it's not needed while typing and OK to overlap
+        return keyboardSize.CGRectValue().height - self.southBar.frame.size.height
     }
+
+    // MARK: share methods
+    
+    @IBAction func shareMeme(sender: AnyObject) {
+        func generateMemedImage() -> UIImage {
+            // conceal bars
+            northBar.hidden = true
+            southBar.hidden = true
+        
+            // Render view to an image
+            UIGraphicsBeginImageContext(self.view.frame.size)
+            self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+            let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            // restore bars
+            northBar.hidden = false
+            southBar.hidden = false
+            return memedImage
+        }
+      
+        let memedImage = generateMemedImage()
+        let actionController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        actionController.completionWithItemsHandler = { (_, completed: Bool, _, _) in
+            if completed {
+                var meme = Meme(topText: self.topTextField.text, bottomText: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage)
+            }
+            self.dismissViewControllerAnimated(true, completion: nil) }
+        presentViewController(actionController, animated: true, completion: nil)        
+    }
+
+
 }
 
 // EOF

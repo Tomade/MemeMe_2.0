@@ -18,13 +18,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbr-f5-wEk">
-                                <rect key="frame" x="16" y="44" width="568" height="512"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                                 <subviews>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-Ms-iA6">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="cf2-Ms-iA6" firstAttribute="leading" secondItem="Fbr-f5-wEk" secondAttribute="leading" id="9hb-Ip-4Y7" userLabel="Left Horizontal Space - Image View - Scroll View"/>
                                     <constraint firstItem="cf2-Ms-iA6" firstAttribute="top" secondItem="Fbr-f5-wEk" secondAttribute="top" id="Sp6-YO-2GX" userLabel="Top Vertical Space - Image View - Scroll View"/>
@@ -45,7 +46,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.89999999999999991" contentMode="scaleToFill" verticalHuggingPriority="300" translatesAutoresizingMaskIntoConstraints="NO" id="nsc-nG-duL" userLabel="northToolbar">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="action" id="ZR8-7G-qKu"/>
+                                    <barButtonItem systemItem="action" id="ZR8-7G-qKu">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="vXZ-lx-hvc" id="iXH-gC-QO7"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Qf8-1X-9ot"/>
                                     <barButtonItem title="Cancel" id="LP2-uf-Tsl"/>
                                 </items>
@@ -74,7 +79,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="hEi-jC-ZLl" secondAttribute="trailing" constant="16" id="0ke-QN-XHD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kSU-CU-hJ1" secondAttribute="trailing" constant="16" id="FNJ-Z8-scJ"/>
                             <constraint firstItem="oAb-RP-LpU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Qg7-nz-W8c"/>
-                            <constraint firstItem="Fbr-f5-wEk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Szi-Zr-xsg"/>
+                            <constraint firstItem="Fbr-f5-wEk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Szi-Zr-xsg"/>
                             <constraint firstItem="kSU-CU-hJ1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="16" id="V3f-mu-Lg0"/>
                             <constraint firstAttribute="centerX" secondItem="kSU-CU-hJ1" secondAttribute="centerX" id="VDE-3p-TQK"/>
                             <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="Fbr-f5-wEk" secondAttribute="bottom" id="Ws8-Vp-omj"/>
@@ -85,7 +90,7 @@
                             <constraint firstItem="hEi-jC-ZLl" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" constant="28" id="eSI-UK-BgA"/>
                             <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="kSU-CU-hJ1" secondAttribute="bottom" constant="28" id="jQL-NT-dAQ"/>
                             <constraint firstItem="Fbr-f5-wEk" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" id="nwa-px-cnS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Fbr-f5-wEk" secondAttribute="trailing" id="op9-HM-tYD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fbr-f5-wEk" secondAttribute="trailing" constant="-16" id="op9-HM-tYD"/>
                             <constraint firstItem="nsc-nG-duL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="poV-4J-iiO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oAb-RP-LpU" secondAttribute="bottom" id="qB1-4E-zlQ"/>
                         </constraints>
@@ -99,12 +104,15 @@
                         <outlet property="imageConstraintRight" destination="vdG-xh-F0e" id="vDJ-Of-Prl"/>
                         <outlet property="imageConstraintTop" destination="Sp6-YO-2GX" id="ETi-hf-oM7"/>
                         <outlet property="imageView" destination="cf2-Ms-iA6" id="5a4-dk-abg"/>
+                        <outlet property="northBar" destination="nsc-nG-duL" id="k6s-yb-Z2r"/>
                         <outlet property="scrollView" destination="Fbr-f5-wEk" id="hvo-pG-FhK"/>
+                        <outlet property="southBar" destination="oAb-RP-LpU" id="qVk-J5-b0b"/>
                         <outlet property="topTextField" destination="hEi-jC-ZLl" id="twY-MY-M58"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="618" y="304"/>
         </scene>
     </scenes>
 </document>
