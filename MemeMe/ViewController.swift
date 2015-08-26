@@ -71,13 +71,13 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        self.subscribeToKeyboardNotifications()
+        subscribeToKeyboardNotifications()
     }
     
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
+        unsubscribeFromKeyboardNotifications()
     }
     
 
@@ -196,12 +196,12 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
             imageView.sizeToFit()
             updateZoom()
             shareButton.enabled = true
-            self.dismissViewControllerAnimated(true, completion: nil)
+            dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -219,13 +219,13 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
     
@@ -233,7 +233,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         // discount bottom bar height, as it's not needed while typing and OK to overlap
-        return keyboardSize.CGRectValue().height - self.southBar.frame.size.height
+        return keyboardSize.CGRectValue().height - southBar.frame.size.height
     }
 
     // MARK: share methods
@@ -245,8 +245,8 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
             southBar.hidden = true
         
             // Render view to an image
-            UIGraphicsBeginImageContext(self.view.frame.size)
-            self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+            UIGraphicsBeginImageContext(view.frame.size)
+            self.view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
             let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
 
