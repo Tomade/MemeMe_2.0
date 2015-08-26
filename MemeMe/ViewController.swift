@@ -23,6 +23,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     @IBOutlet weak var imageConstraintTop: NSLayoutConstraint!
     @IBOutlet weak var imageConstraintBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -50,6 +51,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
             field.delegate = self
         }
         scrollView.delegate = self
+        shareButton.enabled = false
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -77,6 +79,15 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    
+    @IBAction func startOver(sender: AnyObject) {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imageView.image = nil
+        shareButton.enabled = false
+    }
+    
     
     // handle orientation transitions
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -185,6 +196,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = img
             imageView.sizeToFit()
+            shareButton.enabled = true
             updateZoom()
             self.dismissViewControllerAnimated(true, completion: nil)
         }
