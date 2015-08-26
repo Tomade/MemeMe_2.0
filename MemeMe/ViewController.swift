@@ -6,6 +6,21 @@
 //  Copyright (c) 2015 Danilo Fiorenzano. All rights reserved.
 //
 
+/*
+  This is the view controller for MemeMe 1.0.  In addition to satisfying the
+original requirements, it also implements zoom/pan with standard gestures by
+means of a UIScrollView embedding the UIIMageView.  Pictures are initially 
+placed inside the scroll view by programmatically changing the autolayout 
+constraints between the UIIMageView and the UIScrollView.
+
+  We also use the "Cancel" button visible in the screen demo but absent in the
+rubric to reset the app to its initial state, with default text in the top/bottom
+textfields and no image loaded.
+
+*/
+
+
+
 import UIKit
 
 struct Meme {
@@ -32,7 +47,6 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     @IBOutlet weak var southBar: UIToolbar!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var lastZoomScale: CGFloat = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +68,10 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         shareButton.enabled = false
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-        self.subscribeToKeyboardNotifications()
-    }
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        updateZoom()
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        self.subscribeToKeyboardNotifications()
     }
     
     
@@ -71,16 +80,13 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         self.unsubscribeFromKeyboardNotifications()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
+    // No status bar, more room for content
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
-    
+    // cancel button
     @IBAction func startOver(sender: AnyObject) {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
@@ -97,8 +103,20 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
             self.updateConstraints()
         })
     }
+
+    // Zoom to show as much image as possible unless image is smaller than screen
+    func updateZoom() {
+        if let image = imageView.image {
+            var minZoom = min(scrollView.bounds.size.width / image.size.width,
+                scrollView.bounds.size.height / image.size.height)
+            minZoom = min(1, minZoom)
+            scrollView.minimumZoomScale = minZoom
+            scrollView.zoomScale = minZoom
+        }
+    }
+
     
-    
+    // dynamically reconfigure constraints to keep picture centered
     func updateConstraints() {
         if let image = imageView.image {
             let imageWidth = image.size.width
@@ -118,31 +136,10 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
             imageConstraintRight.constant = hPadding
             imageConstraintTop.constant = vPadding
             imageConstraintBottom.constant = vPadding
-            
-            // Makes zoom out animation smooth and starting from the right point not from (0, 0)
-            view.layoutIfNeeded()
         }
     }
 
     
-    // Zoom to show as much image as possible unless image is smaller than screen
-    func updateZoom() {
-        if let image = imageView.image {
-            var minZoom = min(scrollView.bounds.size.width / image.size.width,
-                scrollView.bounds.size.height / image.size.height)
-            
-            if minZoom > 1 { minZoom = 1 }
-            
-            scrollView.minimumZoomScale = minZoom
-            
-            // Force scrollViewDidZoom fire if zoom did not change
-            if minZoom == lastZoomScale { minZoom += 0.000001 }
-            
-            scrollView.zoomScale = minZoom
-            lastZoomScale = minZoom
-        }
-    }
-
     // MARK: UIScrolViewDelegate methods
     func scrollViewDidZoom(scrollView: UIScrollView) {
         updateConstraints()
@@ -155,6 +152,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
 
     // MARK: Textfield delegate methods
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        // clear textfield content first if holding default placeholder text
         if textField.text == "TOP" || textField.text == "BOTTOM" {
             textField.text = ""
         }
@@ -169,6 +167,7 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         var s = textField.text as NSString!
         s = s.stringByReplacingCharactersInRange(range, withString: string)
+        // ensure UPPERCASE text, even if automatically pasted from a predictive keyboard
         textField.text = s.uppercaseString
         return false
     }
@@ -189,15 +188,14 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
-        
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = img
             imageView.sizeToFit()
-            shareButton.enabled = true
             updateZoom()
+            shareButton.enabled = true
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -262,13 +260,12 @@ class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerContro
         let actionController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         actionController.completionWithItemsHandler = { (_, completed: Bool, _, _) in
             if completed {
+                // make/save meme object here, even if for now we do nothing else with it.
                 var meme = Meme(topText: self.topTextField.text, bottomText: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage)
             }
             self.dismissViewControllerAnimated(true, completion: nil) }
         presentViewController(actionController, animated: true, completion: nil)        
     }
-
-
 }
 
 // EOF
