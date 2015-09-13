@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		333664801BA60E1C0049F01B /* Rubric v2.0.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3336647F1BA60E1C0049F01B /* Rubric v2.0.pdf */; };
 		33A915311B89124D000CAACB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A915301B89124D000CAACB /* AppDelegate.swift */; };
 		33A915331B89124D000CAACB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A915321B89124D000CAACB /* ViewController.swift */; };
 		33A915361B89124D000CAACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A915341B89124D000CAACB /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3336647F1BA60E1C0049F01B /* Rubric v2.0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rubric v2.0.pdf"; sourceTree = "<group>"; };
 		33A9152B1B89124D000CAACB /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A9152F1B89124D000CAACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A915301B89124D000CAACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +38,7 @@
 		33A915401B89124D000CAACB /* MemeMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A915451B89124D000CAACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A915461B89124D000CAACB /* MemeMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTests.swift; sourceTree = "<group>"; };
-		33A915501B8914C1000CAACB /* Rubric.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Rubric.pdf; sourceTree = SOURCE_ROOT; };
+		33A915501B8914C1000CAACB /* Rubric v1.0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rubric v1.0.pdf"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +59,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		333664811BA60E570049F01B /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				33A915501B8914C1000CAACB /* Rubric v1.0.pdf */,
+				3336647F1BA60E1C0049F01B /* Rubric v2.0.pdf */,
+			);
+			name = Docs;
+			sourceTree = "<group>";
+		};
 		33A915221B89124D000CAACB = {
 			isa = PBXGroup;
 			children = (
+				333664811BA60E570049F01B /* Docs */,
 				33A9152D1B89124D000CAACB /* MemeMe */,
 				33A915431B89124D000CAACB /* MemeMeTests */,
 				33A9152C1B89124D000CAACB /* Products */,
@@ -81,7 +93,6 @@
 				33A915301B89124D000CAACB /* AppDelegate.swift */,
 				33A915321B89124D000CAACB /* ViewController.swift */,
 				33A915341B89124D000CAACB /* Main.storyboard */,
-				33A915501B8914C1000CAACB /* Rubric.pdf */,
 				33A915371B89124D000CAACB /* Images.xcassets */,
 				33A915391B89124D000CAACB /* LaunchScreen.xib */,
 				33A9152E1B89124D000CAACB /* Supporting Files */,
@@ -194,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333664801BA60E1C0049F01B /* Rubric v2.0.pdf in Resources */,
 				33A915361B89124D000CAACB /* Main.storyboard in Resources */,
 				33A9153B1B89124D000CAACB /* LaunchScreen.xib in Resources */,
 				33A915381B89124D000CAACB /* Images.xcassets in Resources */,
@@ -411,6 +423,7 @@
 				33A9154C1B89124D000CAACB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		33A9154D1B89124D000CAACB /* Build configuration list for PBXNativeTarget "MemeMeTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +432,7 @@
 				33A9154F1B89124D000CAACB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
