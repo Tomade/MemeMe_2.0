@@ -20,15 +20,7 @@ textfields and no image loaded.
 */
 
 
-
 import UIKit
-
-struct Meme {
-    var topText: String
-    var bottomText: String
-    var image: UIImage
-    var memedImage: UIImage
-}
 
 class ViewController: UIViewController, UIScrollViewDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
