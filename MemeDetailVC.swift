@@ -10,18 +10,20 @@ import UIKit
 
 class MemeDetailVC: UIViewController {
 
-    var memeIndex = 0
+    var memeIndex = -1
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        tabBarController?.tabBar.hidden = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let sentMemeArray = (UIApplication.sharedApplication().delegate as! AppDelegate).savedMemes
         let meme = sentMemeArray[memeIndex]
         imageView.image = meme.memedImage
-        tabBarController?.tabBar.hidden = true
-
-    }
+     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,6 +36,11 @@ class MemeDetailVC: UIViewController {
     }
 
     
+    @IBAction func editMeme(sender: AnyObject) {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("memeEditor") as! MemeEditorVC
+        vc.memeIndex = memeIndex
+        presentViewController(vc, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

@@ -24,6 +24,8 @@ import UIKit
 
 class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
+    var memeIndex = -1
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageConstraintLeft: NSLayoutConstraint!
     @IBOutlet weak var imageConstraintRight: NSLayoutConstraint!
@@ -39,27 +41,43 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     @IBOutlet weak var southBar: UIToolbar!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        if memeIndex >= 0 {
+            let meme = (UIApplication.sharedApplication().delegate as! AppDelegate).savedMemes[memeIndex]
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+            imageView.image = meme.image
+        }
+        else {
+            // new meme
+            topTextField.text = "TOP"
+            bottomTextField.text = "BOTTOM"
+            shareButton.enabled = false
+        }
+
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : "-2.0"
         ]
+        
         for field in [topTextField, bottomTextField] {
             field.defaultTextAttributes = memeTextAttributes
             field.textAlignment = .Center
             field.delegate = self
         }
         scrollView.delegate = self
-        shareButton.enabled = false
+
     }
 
+    override func viewDidLayoutSubviews() {
+        updateZoom()
+        updateConstraints()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
@@ -129,7 +147,7 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     }
 
     
-    // MARK: UIScrolViewDelegate methods
+    // MARK: UIScrollViewDelegate methods
     func scrollViewDidZoom(scrollView: UIScrollView) {
         updateConstraints()
     }
@@ -225,8 +243,8 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
         return keyboardSize.CGRectValue().height - southBar.frame.size.height
     }
 
+
     // MARK: share methods
-    
     @IBAction func shareMeme(sender: AnyObject) {
         func generateMemedImage() -> UIImage {
             // conceal bars
@@ -252,9 +270,15 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
                 // make/save meme object here if action successfully completed
                 var meme = Meme(topText: self.topTextField.text, bottomText: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage)
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                delegate.savedMemes.append(meme)
+                if self.memeIndex == -1 { // this is a new meme
+                    delegate.savedMemes.append(meme)
+                }
+                else {
+                    delegate.savedMemes[self.memeIndex] = meme
+                }
             }
-            self.dismissViewControllerAnimated(true, completion: nil) }
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
         presentViewController(actionController, animated: true, completion: nil)        
     }
 }

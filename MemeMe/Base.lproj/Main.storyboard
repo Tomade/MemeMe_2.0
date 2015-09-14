@@ -46,7 +46,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="FHE-NM-juc" userLabel="List">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="Vat-07-RNr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vat-07-RNr">
                             <connections>
                                 <segue destination="vXZ-lx-hvc" kind="presentation" id="a2G-Jl-Pg2"/>
                             </connections>
@@ -107,7 +107,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="Ueg-lB-zh8">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="O7D-Mt-haU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="O7D-Mt-haU">
                             <connections>
                                 <segue destination="vXZ-lx-hvc" kind="presentation" id="8g6-vh-qro"/>
                             </connections>
@@ -135,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="-54" y="688"/>
         </scene>
-        <!--Meme DetailVC-->
+        <!--MemeDetailVC-->
         <scene sceneID="IbZ-0j-XBX">
             <objects>
-                <viewController storyboardIdentifier="MemeDetail" id="tKk-bg-e2W" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetail" id="tKk-bg-e2W" userLabel="MemeDetailVC" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tvP-7t-S9O"/>
                         <viewControllerLayoutGuide type="bottom" id="mUa-4l-ffu"/>
@@ -160,7 +160,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TUJ-uv-Kes">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="siW-RJ-6I1"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="siW-RJ-6I1">
+                            <connections>
+                                <action selector="editMeme:" destination="tKk-bg-e2W" id="rVw-W2-iWu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="Ixb-MG-w1T" id="oVw-Wr-Im8"/>
@@ -173,7 +177,7 @@
         <!--Meme EditorVC-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="MemeEditorVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="memeEditor" id="vXZ-lx-hvc" customClass="MemeEditorVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
