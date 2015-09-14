@@ -45,10 +45,13 @@
                             <outlet property="delegate" destination="Oy8-MH-vxx" id="Pux-ZN-BWr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="List" id="FHE-NM-juc" userLabel="List"/>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="show" identifier="editMeme" id="njs-Ex-m3B"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="FHE-NM-juc" userLabel="List">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="Vat-07-RNr">
+                            <connections>
+                                <segue destination="vXZ-lx-hvc" kind="presentation" id="a2G-Jl-Pg2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rDP-hR-ho0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="-54" y="-78"/>
         </scene>
-        <!--Grid-->
+        <!--Sent Memes-->
         <scene sceneID="mRN-p4-cph">
             <objects>
                 <collectionViewController id="dro-kH-Xxn" sceneMemberID="viewController">
@@ -100,10 +103,13 @@
                             <outlet property="delegate" destination="dro-kH-Xxn" id="ByY-T4-x0o"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Grid" id="Ueg-lB-zh8"/>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="show" identifier="editMeme" id="ACr-RV-4yl"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="Ueg-lB-zh8">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="O7D-Mt-haU">
+                            <connections>
+                                <segue destination="vXZ-lx-hvc" kind="presentation" id="8g6-vh-qro"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4a5-YD-lOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -138,7 +144,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fbr-f5-wEk">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbr-f5-wEk">
                                 <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                                 <subviews>
                                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-Ms-iA6">
@@ -159,7 +165,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-CU-hJ1" userLabel="bottomTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-CU-hJ1" userLabel="bottomTextField">
                                 <rect key="frame" x="32" y="511" width="536" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -180,7 +186,7 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.89999999999999991" contentMode="top" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAb-RP-LpU" userLabel="southToolbar">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.89999999999999991" contentMode="top" translatesAutoresizingMaskIntoConstraints="NO" id="oAb-RP-LpU" userLabel="southToolbar">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6qb-vg-mwQ"/>
@@ -238,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1520" y="314"/>
+            <point key="canvasLocation" x="1898" y="338"/>
         </scene>
     </scenes>
     <resources>
@@ -246,6 +252,6 @@
         <image name="Table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="njs-Ex-m3B"/>
+        <segue reference="a2G-Jl-Pg2"/>
     </inferredMetricsTieBreakers>
 </document>

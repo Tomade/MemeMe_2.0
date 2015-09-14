@@ -80,10 +80,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIImagePickerContr
     
     // cancel button
     @IBAction func startOver(sender: AnyObject) {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        imageView.image = nil
-        shareButton.enabled = false
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -252,8 +249,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UIImagePickerContr
         let actionController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         actionController.completionWithItemsHandler = { (_, completed: Bool, _, _) in
             if completed {
-                // make/save meme object here, even if for now we do nothing else with it.
+                // make/save meme object here if action successfully completed
                 var meme = Meme(topText: self.topTextField.text, bottomText: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage)
+                let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                delegate.savedMemes.append(meme)
             }
             self.dismissViewControllerAnimated(true, completion: nil) }
         presentViewController(actionController, animated: true, completion: nil)        
