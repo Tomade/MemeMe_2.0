@@ -15,6 +15,7 @@
 		33A915381B89124D000CAACB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33A915371B89124D000CAACB /* Images.xcassets */; };
 		33A9153B1B89124D000CAACB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A915391B89124D000CAACB /* LaunchScreen.xib */; };
 		33A915471B89124D000CAACB /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A915461B89124D000CAACB /* MemeMeTests.swift */; };
+		33D6425F1BA66FBF00B2BAF8 /* SentMemesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6425E1BA66FBF00B2BAF8 /* SentMemesTableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		33A915451B89124D000CAACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A915461B89124D000CAACB /* MemeMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTests.swift; sourceTree = "<group>"; };
 		33A915501B8914C1000CAACB /* Rubric v1.0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rubric v1.0.pdf"; sourceTree = SOURCE_ROOT; };
+		33D6425E1BA66FBF00B2BAF8 /* SentMemesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				33A915321B89124D000CAACB /* ViewController.swift */,
 				333664821BA610360049F01B /* Meme.swift */,
 				33A915341B89124D000CAACB /* Main.storyboard */,
+				33D6425E1BA66FBF00B2BAF8 /* SentMemesTableVC.swift */,
 				33A915371B89124D000CAACB /* Images.xcassets */,
 				33A915391B89124D000CAACB /* LaunchScreen.xib */,
 				33A9152E1B89124D000CAACB /* Supporting Files */,
@@ -232,6 +235,7 @@
 				333664831BA610360049F01B /* Meme.swift in Sources */,
 				33A915331B89124D000CAACB /* ViewController.swift in Sources */,
 				33A915311B89124D000CAACB /* AppDelegate.swift in Sources */,
+				33D6425F1BA66FBF00B2BAF8 /* SentMemesTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
