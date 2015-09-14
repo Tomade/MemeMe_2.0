@@ -159,6 +159,9 @@
                             <constraint firstItem="Ixb-MG-w1T" firstAttribute="top" secondItem="w53-Mn-eUz" secondAttribute="topMargin" id="oq1-KK-g8f"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="TUJ-uv-Kes">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="siW-RJ-6I1"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="Ixb-MG-w1T" id="oVw-Wr-Im8"/>
                     </connections>
@@ -167,10 +170,10 @@
             </objects>
             <point key="canvasLocation" x="1466" y="-364"/>
         </scene>
-        <!--View Controller-->
+        <!--Meme EditorVC-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MemeEditorVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
