@@ -15,8 +15,10 @@
 		33A915381B89124D000CAACB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33A915371B89124D000CAACB /* Images.xcassets */; };
 		33A9153B1B89124D000CAACB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A915391B89124D000CAACB /* LaunchScreen.xib */; };
 		33A915471B89124D000CAACB /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A915461B89124D000CAACB /* MemeMeTests.swift */; };
-		33D6425F1BA66FBF00B2BAF8 /* SentMemesTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6425E1BA66FBF00B2BAF8 /* SentMemesTableVC.swift */; };
+		33D6425F1BA66FBF00B2BAF8 /* MemeTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D6425E1BA66FBF00B2BAF8 /* MemeTableVC.swift */; };
 		33D642631BA68A6100B2BAF8 /* MemeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D642621BA68A6100B2BAF8 /* MemeDetailVC.swift */; };
+		33D642651BA773DE00B2BAF8 /* MemeCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D642641BA773DE00B2BAF8 /* MemeCollectionVC.swift */; };
+		33D642671BA79BEE00B2BAF8 /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D642661BA79BEE00B2BAF8 /* MemeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +45,10 @@
 		33A915451B89124D000CAACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A915461B89124D000CAACB /* MemeMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeTests.swift; sourceTree = "<group>"; };
 		33A915501B8914C1000CAACB /* Rubric v1.0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rubric v1.0.pdf"; sourceTree = SOURCE_ROOT; };
-		33D6425E1BA66FBF00B2BAF8 /* SentMemesTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesTableVC.swift; sourceTree = "<group>"; };
+		33D6425E1BA66FBF00B2BAF8 /* MemeTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableVC.swift; sourceTree = "<group>"; };
 		33D642621BA68A6100B2BAF8 /* MemeDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MemeDetailVC.swift; path = ../MemeDetailVC.swift; sourceTree = "<group>"; };
+		33D642641BA773DE00B2BAF8 /* MemeCollectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionVC.swift; sourceTree = "<group>"; };
+		33D642661BA79BEE00B2BAF8 /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 				333664821BA610360049F01B /* Meme.swift */,
 				33D642621BA68A6100B2BAF8 /* MemeDetailVC.swift */,
 				33A915341B89124D000CAACB /* Main.storyboard */,
-				33D6425E1BA66FBF00B2BAF8 /* SentMemesTableVC.swift */,
+				33D6425E1BA66FBF00B2BAF8 /* MemeTableVC.swift */,
+				33D642641BA773DE00B2BAF8 /* MemeCollectionVC.swift */,
+				33D642661BA79BEE00B2BAF8 /* MemeCollectionViewCell.swift */,
 				33A915371B89124D000CAACB /* Images.xcassets */,
 				33A915391B89124D000CAACB /* LaunchScreen.xib */,
 				33A9152E1B89124D000CAACB /* Supporting Files */,
@@ -237,9 +243,11 @@
 			files = (
 				333664831BA610360049F01B /* Meme.swift in Sources */,
 				33D642631BA68A6100B2BAF8 /* MemeDetailVC.swift in Sources */,
+				33D642651BA773DE00B2BAF8 /* MemeCollectionVC.swift in Sources */,
 				33A915331B89124D000CAACB /* MemeEditorVC.swift in Sources */,
+				33D642671BA79BEE00B2BAF8 /* MemeCollectionViewCell.swift in Sources */,
 				33A915311B89124D000CAACB /* AppDelegate.swift in Sources */,
-				33D6425F1BA66FBF00B2BAF8 /* SentMemesTableVC.swift in Sources */,
+				33D6425F1BA66FBF00B2BAF8 /* MemeTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
