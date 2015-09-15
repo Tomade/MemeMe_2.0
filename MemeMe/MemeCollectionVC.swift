@@ -12,23 +12,27 @@ let reuseIdentifier = "sentMeme"
 
 class MemeCollectionVC: UICollectionViewController {
 
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView!.registerClass(MemeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
         // Do any additional setup after loading the view.
+        flowLayout.minimumInteritemSpacing = 3
+        flowLayout.minimumLineSpacing = 3
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.width - (2 * space)) / 3.0
+        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
     }
-
     /*
     // MARK: - Navigation
 
@@ -55,13 +59,19 @@ class MemeCollectionVC: UICollectionViewController {
         let meme = sentMemeArray[indexPath.item]
         cell.imageView?.image = meme.memedImage
 //        cell.textLabel?.text = meme.topText + "..." + meme.bottomText
-
     
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as! MemeDetailVC
+        vc.memeIndex = indexPath.item
+        navigationController?.pushViewController(vc, animated: true)
+
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {

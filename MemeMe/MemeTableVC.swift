@@ -46,6 +46,7 @@ class MemeTableVC: UITableViewController {
         let sentMemeArray = (UIApplication.sharedApplication().delegate as! AppDelegate).savedMemes
         let meme = sentMemeArray[indexPath.row]
         cell.imageView?.image = meme.memedImage
+        cell.imageView?.contentMode = .ScaleAspectFit
         cell.textLabel?.text = meme.topText + "..." + meme.bottomText
         
         return cell

@@ -84,6 +84,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Uec-C2-YDE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OHK-B0-nWp">
                             <size key="itemSize" width="103" height="103"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -98,14 +99,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RF4-Jv-x9r">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RF4-Jv-x9r">
                                             <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="1" green="0.85490196939999996" blue="0.7254902124" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="RF4-Jv-x9r" firstAttribute="leading" secondItem="ZcJ-9T-up0" secondAttribute="leadingMargin" constant="-8" id="K97-QP-wyL"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="RF4-Jv-x9r" secondAttribute="bottom" constant="-8" id="URh-0h-IiF"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="RF4-Jv-x9r" secondAttribute="trailing" constant="-8" id="ZRQ-lJ-zUH"/>
+                                    <constraint firstItem="RF4-Jv-x9r" firstAttribute="top" secondItem="ZcJ-9T-up0" secondAttribute="topMargin" constant="-8" id="wJh-Ph-Da8"/>
+                                </constraints>
                                 <connections>
-                                    <outlet property="image" destination="RF4-Jv-x9r" id="52s-uh-gb2"/>
+                                    <outlet property="imageView" destination="RF4-Jv-x9r" id="z3I-fc-Tjx"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -121,6 +129,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="OHK-B0-nWp" id="aSc-kH-YAQ"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4a5-YD-lOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
