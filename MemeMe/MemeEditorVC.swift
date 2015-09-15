@@ -25,6 +25,7 @@ import UIKit
 class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     var memeIndex = -1
+    var meme:Meme?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageConstraintLeft: NSLayoutConstraint!
@@ -41,14 +42,17 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     @IBOutlet weak var southBar: UIToolbar!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var memeView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         if memeIndex >= 0 {
-            let meme = (UIApplication.sharedApplication().delegate as! AppDelegate).savedMemes[memeIndex]
-            topTextField.text = meme.topText
-            bottomTextField.text = meme.bottomText
-            imageView.image = meme.image
+            meme = (UIApplication.sharedApplication().delegate as! AppDelegate).savedMemes[memeIndex]
+            topTextField.text = meme!.topText
+            bottomTextField.text = meme!.bottomText
+            imageView.image = meme!.image
+            
         }
         else {
             // new meme
@@ -74,12 +78,15 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     }
 
     override func viewDidLayoutSubviews() {
-        updateZoom()
-        updateConstraints()
+        if memeIndex > -1 {
+            updateMinZoom()
+            scrollView.zoomScale = meme!.zoomScale         
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        updateConstraints()
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         subscribeToKeyboardNotifications()
     }
@@ -106,19 +113,19 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition(nil, completion: { _ in
-            self.updateZoom()
+            self.updateMinZoom()
             self.updateConstraints()
         })
     }
 
     // Zoom to show as much image as possible unless image is smaller than screen
-    func updateZoom() {
+    func updateMinZoom() {
         if let image = imageView.image {
             var minZoom = min(scrollView.bounds.size.width / image.size.width,
                 scrollView.bounds.size.height / image.size.height)
             minZoom = min(1, minZoom)
             scrollView.minimumZoomScale = minZoom
-            scrollView.zoomScale = minZoom
+//            scrollView.zoomScale = minZoom
         }
     }
 
@@ -201,7 +208,8 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
         if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = img
             imageView.sizeToFit()
-            updateZoom()
+            updateMinZoom()
+            scrollView.zoomScale = scrollView.minimumZoomScale
             shareButton.enabled = true
             dismissViewControllerAnimated(true, completion: nil)
         }
@@ -248,18 +256,18 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     @IBAction func shareMeme(sender: AnyObject) {
         func generateMemedImage() -> UIImage {
             // conceal bars
-            northBar.hidden = true
-            southBar.hidden = true
+//            northBar.hidden = true
+//            southBar.hidden = true
         
             // Render view to an image
-            UIGraphicsBeginImageContext(view.frame.size)
-            self.view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
+            UIGraphicsBeginImageContext(memeView.frame.size)
+            memeView.drawViewHierarchyInRect(memeView.frame, afterScreenUpdates: true)
             let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
 
             // restore bars
-            northBar.hidden = false
-            southBar.hidden = false
+//            northBar.hidden = false
+//            southBar.hidden = false
             return memedImage
         }
       
@@ -268,7 +276,7 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
         actionController.completionWithItemsHandler = { (_, completed: Bool, _, _) in
             if completed {
                 // make/save meme object here if action successfully completed
-                var meme = Meme(topText: self.topTextField.text, bottomText: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage)
+                var meme = Meme(topText: self.topTextField.text, bottomText: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage, zoomScale: self.scrollView.zoomScale)
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 if self.memeIndex == -1 { // this is a new meme
                     delegate.savedMemes.append(meme)

@@ -10,6 +10,8 @@ import UIKit
 
 class MemeTableVC: UITableViewController {
 
+    var memeIndex:Int = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,8 +57,10 @@ class MemeTableVC: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as! MemeDetailVC
-        vc.memeIndex = indexPath.row
-        navigationController?.pushViewController(vc, animated: true)
+        memeIndex = indexPath.row
+        performSegueWithIdentifier("listToDetail", sender: self)
+//        navigationController?.pushViewController(vc, animated: true)
+//        presentViewController(vc, animated: true, completion: nil)
     }
     
     /*
@@ -94,14 +98,18 @@ class MemeTableVC: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if let vc = segue.destinationViewController as? MemeDetailVC {
+            vc.memeIndex = memeIndex
+        }
+        
     }
-    */
+
 
 }

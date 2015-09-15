@@ -13,4 +13,5 @@ struct Meme {
     var bottomText: String
     var image: UIImage
     var memedImage: UIImage
+    var zoomScale: CGFloat
 }

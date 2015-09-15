@@ -69,7 +69,6 @@ class MemeCollectionVC: UICollectionViewController {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as! MemeDetailVC
         vc.memeIndex = indexPath.item
         navigationController?.pushViewController(vc, animated: true)
-
     }
     
     /*

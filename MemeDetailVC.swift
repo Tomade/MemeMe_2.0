@@ -15,7 +15,7 @@ class MemeDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tabBarController?.tabBar.hidden = true
+//        tabBarController?.tabBar.hidden = true
     }
     
     override func viewWillAppear(animated: Bool) {

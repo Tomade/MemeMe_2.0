@@ -53,7 +53,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="tKk-bg-e2W" kind="show" identifier="listToDetail" id="eSs-Jq-xZF"/>
+                        <segue destination="tKk-bg-e2W" kind="presentation" identifier="listToDetail" id="eSs-Jq-xZF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rDP-hR-ho0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,34 +157,42 @@
         <!--MemeDetailVC-->
         <scene sceneID="IbZ-0j-XBX">
             <objects>
-                <viewController storyboardIdentifier="MemeDetail" id="tKk-bg-e2W" userLabel="MemeDetailVC" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetail" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="tKk-bg-e2W" userLabel="MemeDetailVC" customClass="MemeDetailVC" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tvP-7t-S9O"/>
                         <viewControllerLayoutGuide type="bottom" id="mUa-4l-ffu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="w53-Mn-eUz">
+                    <view key="view" contentMode="scaleAspectFit" id="w53-Mn-eUz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1t-Un-sDl">
+                                <rect key="frame" x="0.0" y="12" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="TUJ-uv-Kes">
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="siW-RJ-6I1">
+                                            <connections>
+                                                <action selector="editMeme:" destination="tKk-bg-e2W" id="rVw-W2-iWu"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ixb-MG-w1T">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="56" width="600" height="544"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="S1t-Un-sDl" secondAttribute="trailing" constant="-16" id="7bf-4E-W6k"/>
                             <constraint firstItem="Ixb-MG-w1T" firstAttribute="bottom" secondItem="w53-Mn-eUz" secondAttribute="bottomMargin" id="8Sh-UV-rvX"/>
                             <constraint firstItem="Ixb-MG-w1T" firstAttribute="leading" secondItem="w53-Mn-eUz" secondAttribute="leadingMargin" constant="-16" id="Afr-Id-XgD"/>
+                            <constraint firstItem="S1t-Un-sDl" firstAttribute="leading" secondItem="w53-Mn-eUz" secondAttribute="leadingMargin" constant="-16" id="M9x-Jv-U4z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ixb-MG-w1T" secondAttribute="trailing" constant="-16" id="Phv-Fj-tff"/>
-                            <constraint firstItem="Ixb-MG-w1T" firstAttribute="top" secondItem="w53-Mn-eUz" secondAttribute="topMargin" id="oq1-KK-g8f"/>
+                            <constraint firstItem="Ixb-MG-w1T" firstAttribute="top" secondItem="S1t-Un-sDl" secondAttribute="bottom" id="VfC-HN-Lqo"/>
+                            <constraint firstItem="S1t-Un-sDl" firstAttribute="top" secondItem="tvP-7t-S9O" secondAttribute="bottom" constant="-8" id="iFy-Kt-QNi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TUJ-uv-Kes">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="siW-RJ-6I1">
-                            <connections>
-                                <action selector="editMeme:" destination="tKk-bg-e2W" id="rVw-W2-iWu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="Ixb-MG-w1T" id="oVw-Wr-Im8"/>
                     </connections>
@@ -205,32 +213,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbr-f5-wEk">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJ0-yq-3ZC" userLabel="MemeView">
                                 <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                                 <subviews>
-                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-Ms-iA6">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </imageView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fbr-f5-wEk">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="512"/>
+                                        <subviews>
+                                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-Ms-iA6">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="cf2-Ms-iA6" firstAttribute="leading" secondItem="Fbr-f5-wEk" secondAttribute="leading" id="9hb-Ip-4Y7" userLabel="Left Horizontal Space - Image View - Scroll View"/>
+                                            <constraint firstItem="cf2-Ms-iA6" firstAttribute="top" secondItem="Fbr-f5-wEk" secondAttribute="top" id="Sp6-YO-2GX" userLabel="Top Vertical Space - Image View - Scroll View"/>
+                                            <constraint firstAttribute="trailing" secondItem="cf2-Ms-iA6" secondAttribute="trailing" id="vdG-xh-F0e" userLabel="Right Horizontal Space - Scroll View - Image View"/>
+                                            <constraint firstAttribute="bottom" secondItem="cf2-Ms-iA6" secondAttribute="bottom" id="wzQ-vG-rCi" userLabel="Bottom Vertical Space - Scroll View - Image View"/>
+                                        </constraints>
+                                    </scrollView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEi-jC-ZLl" userLabel="topTextField">
+                                        <rect key="frame" x="281" y="100" width="38" height="20"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="TOP">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-CU-hJ1" userLabel="bottomTextField">
+                                        <rect key="frame" x="262" y="392" width="76" height="20"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="BOTTOM">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="cf2-Ms-iA6" firstAttribute="leading" secondItem="Fbr-f5-wEk" secondAttribute="leading" id="9hb-Ip-4Y7" userLabel="Left Horizontal Space - Image View - Scroll View"/>
-                                    <constraint firstItem="cf2-Ms-iA6" firstAttribute="top" secondItem="Fbr-f5-wEk" secondAttribute="top" id="Sp6-YO-2GX" userLabel="Top Vertical Space - Image View - Scroll View"/>
-                                    <constraint firstAttribute="trailing" secondItem="cf2-Ms-iA6" secondAttribute="trailing" id="vdG-xh-F0e" userLabel="Right Horizontal Space - Scroll View - Image View"/>
-                                    <constraint firstAttribute="bottom" secondItem="cf2-Ms-iA6" secondAttribute="bottom" id="wzQ-vG-rCi" userLabel="Bottom Vertical Space - Scroll View - Image View"/>
+                                    <constraint firstItem="Fbr-f5-wEk" firstAttribute="top" secondItem="LJ0-yq-3ZC" secondAttribute="top" id="0br-u0-Qnw"/>
+                                    <constraint firstAttribute="centerX" secondItem="hEi-jC-ZLl" secondAttribute="centerX" id="1oP-rM-gff"/>
+                                    <constraint firstAttribute="centerX" secondItem="kSU-CU-hJ1" secondAttribute="centerX" id="4pE-nx-hQH"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fbr-f5-wEk" secondAttribute="bottom" id="O8k-r4-O6R"/>
+                                    <constraint firstAttribute="bottom" secondItem="kSU-CU-hJ1" secondAttribute="bottom" constant="100" id="SoQ-G9-3tu"/>
+                                    <constraint firstItem="Fbr-f5-wEk" firstAttribute="leading" secondItem="LJ0-yq-3ZC" secondAttribute="leading" id="a7i-vu-Ctg"/>
+                                    <constraint firstItem="hEi-jC-ZLl" firstAttribute="top" secondItem="LJ0-yq-3ZC" secondAttribute="top" constant="100" id="f3j-Qe-Sw1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fbr-f5-wEk" secondAttribute="trailing" id="oHA-jY-UyF"/>
                                 </constraints>
-                            </scrollView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEi-jC-ZLl" userLabel="topTextField">
-                                <rect key="frame" x="32" y="72" width="536" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-CU-hJ1" userLabel="bottomTextField">
-                                <rect key="frame" x="32" y="511" width="536" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.89999999999999991" contentMode="scaleToFill" verticalHuggingPriority="300" translatesAutoresizingMaskIntoConstraints="NO" id="nsc-nG-duL" userLabel="northToolbar">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
@@ -266,26 +306,27 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="hEi-jC-ZLl" secondAttribute="trailing" constant="16" id="0ke-QN-XHD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kSU-CU-hJ1" secondAttribute="trailing" constant="16" id="FNJ-Z8-scJ"/>
+                            <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="LJ0-yq-3ZC" secondAttribute="bottom" id="3yH-rC-FzA"/>
+                            <constraint firstItem="LJ0-yq-3ZC" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" id="67z-Pp-cxf"/>
+                            <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="LJ0-yq-3ZC" secondAttribute="bottom" constant="-8" id="Iw5-TR-IIe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LJ0-yq-3ZC" secondAttribute="trailing" constant="-16" id="Luw-qk-ZY8"/>
                             <constraint firstItem="oAb-RP-LpU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Qg7-nz-W8c"/>
-                            <constraint firstItem="Fbr-f5-wEk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="Szi-Zr-xsg"/>
-                            <constraint firstItem="kSU-CU-hJ1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="16" id="V3f-mu-Lg0"/>
-                            <constraint firstAttribute="centerX" secondItem="kSU-CU-hJ1" secondAttribute="centerX" id="VDE-3p-TQK"/>
-                            <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="Fbr-f5-wEk" secondAttribute="bottom" id="Ws8-Vp-omj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oAb-RP-LpU" secondAttribute="trailing" constant="-16" id="WsM-jb-bua"/>
-                            <constraint firstItem="hEi-jC-ZLl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="16" id="XJn-xp-c1a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nsc-nG-duL" secondAttribute="trailing" constant="-16" id="bRO-Zb-WFX"/>
+                            <constraint firstItem="LJ0-yq-3ZC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="byl-Gl-h0z"/>
                             <constraint firstItem="nsc-nG-duL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="dJQ-TM-wtr"/>
-                            <constraint firstItem="hEi-jC-ZLl" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" constant="28" id="eSI-UK-BgA"/>
-                            <constraint firstItem="oAb-RP-LpU" firstAttribute="top" secondItem="kSU-CU-hJ1" secondAttribute="bottom" constant="28" id="jQL-NT-dAQ"/>
-                            <constraint firstItem="Fbr-f5-wEk" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" id="nwa-px-cnS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Fbr-f5-wEk" secondAttribute="trailing" constant="-16" id="op9-HM-tYD"/>
                             <constraint firstItem="nsc-nG-duL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="poV-4J-iiO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oAb-RP-LpU" secondAttribute="bottom" id="qB1-4E-zlQ"/>
+                            <constraint firstItem="LJ0-yq-3ZC" firstAttribute="top" secondItem="nsc-nG-duL" secondAttribute="bottom" id="xCG-O7-wdO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="67z-Pp-cxf"/>
+                                <exclude reference="Iw5-TR-IIe"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -296,6 +337,7 @@
                         <outlet property="imageConstraintRight" destination="vdG-xh-F0e" id="vDJ-Of-Prl"/>
                         <outlet property="imageConstraintTop" destination="Sp6-YO-2GX" id="ETi-hf-oM7"/>
                         <outlet property="imageView" destination="cf2-Ms-iA6" id="5a4-dk-abg"/>
+                        <outlet property="memeView" destination="LJ0-yq-3ZC" id="AsL-S2-d5h"/>
                         <outlet property="northBar" destination="nsc-nG-duL" id="k6s-yb-Z2r"/>
                         <outlet property="scrollView" destination="Fbr-f5-wEk" id="hvo-pG-FhK"/>
                         <outlet property="shareButton" destination="ZR8-7G-qKu" id="xoS-h8-pTz"/>
