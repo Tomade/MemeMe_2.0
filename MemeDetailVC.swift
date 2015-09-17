@@ -15,11 +15,12 @@ class MemeDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tabBarController?.tabBar.hidden = true
+
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.hidden = true
         let sentMemeArray = (UIApplication.sharedApplication().delegate as! AppDelegate).savedMemes
         let meme = sentMemeArray[memeIndex]
         imageView.image = meme.memedImage
