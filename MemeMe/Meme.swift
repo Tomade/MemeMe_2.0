@@ -14,4 +14,5 @@ struct Meme {
     var image: UIImage
     var memedImage: UIImage
     var zoomScale: CGFloat
+    var imageOffset: CGPoint
 }

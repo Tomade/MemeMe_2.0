@@ -57,9 +57,9 @@ class MemeTableVC: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("MemeDetail") as! MemeDetailVC
-        memeIndex = indexPath.row
-        performSegueWithIdentifier("listToDetail", sender: self)
-//        navigationController?.pushViewController(vc, animated: true)
+        vc.memeIndex = indexPath.row
+//        performSegueWithIdentifier("listToDetail", sender: self)
+        navigationController?.pushViewController(vc, animated: true)
 //        presentViewController(vc, animated: true, completion: nil)
     }
     

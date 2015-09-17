@@ -80,7 +80,8 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     override func viewDidLayoutSubviews() {
         if memeIndex > -1 {
             updateMinZoom()
-            scrollView.zoomScale = meme!.zoomScale         
+            scrollView.zoomScale = meme!.zoomScale
+            scrollView.contentOffset = meme!.imageOffset
         }
     }
     
@@ -276,7 +277,12 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
         actionController.completionWithItemsHandler = { (_, completed: Bool, _, _) in
             if completed {
                 // make/save meme object here if action successfully completed
-                var meme = Meme(topText: self.topTextField.text, bottomText: self.bottomTextField.text, image: self.imageView.image!, memedImage: memedImage, zoomScale: self.scrollView.zoomScale)
+                var meme = Meme(topText: self.topTextField.text,
+                    bottomText: self.bottomTextField.text,
+                    image: self.imageView.image!,
+                    memedImage: memedImage,
+                    zoomScale: self.scrollView.zoomScale,
+                    imageOffset: self.scrollView.contentOffset)
                 let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 if self.memeIndex == -1 { // this is a new meme
                     delegate.savedMemes.append(meme)
