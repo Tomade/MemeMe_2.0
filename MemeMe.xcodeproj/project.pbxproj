@@ -32,9 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		330AAC2B1BABB71400CB48F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = MemeMe.xcodeproj/README.md; sourceTree = "<group>"; };
 		3336647F1BA60E1C0049F01B /* Rubric v2.0.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Rubric v2.0.pdf"; sourceTree = "<group>"; };
 		333664821BA610360049F01B /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		3378D9C21BABDA89009EBFE6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		33A9152B1B89124D000CAACB /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A9152F1B89124D000CAACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33A915301B89124D000CAACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		333664811BA60E570049F01B /* Docs */ = {
 			isa = PBXGroup;
 			children = (
-				330AAC2B1BABB71400CB48F0 /* README.md */,
+				3378D9C21BABDA89009EBFE6 /* README.md */,
 				33A915501B8914C1000CAACB /* Rubric v1.0.pdf */,
 				3336647F1BA60E1C0049F01B /* Rubric v2.0.pdf */,
 			);
