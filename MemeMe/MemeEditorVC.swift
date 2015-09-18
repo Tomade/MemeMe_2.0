@@ -7,15 +7,14 @@
 //
 
 /*
-  This is the view controller for MemeMe 1.0.  In addition to satisfying the
+  This is the view controller for MemeMe 2.0.  In addition to satisfying the
 original requirements, it also implements zoom/pan with standard gestures by
 means of a UIScrollView embedding the UIIMageView.  Pictures are initially 
 placed inside the scroll view by programmatically changing the autolayout 
 constraints between the UIIMageView and the UIScrollView.
 
   We also use the "Cancel" button visible in the screen demo but absent in the
-rubric to reset the app to its initial state, with default text in the top/bottom
-textfields and no image loaded.
+rubric to abort the edit operation.
 
 */
 
@@ -126,7 +125,6 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
                 scrollView.bounds.size.height / image.size.height)
             minZoom = min(1, minZoom)
             scrollView.minimumZoomScale = minZoom
-//            scrollView.zoomScale = minZoom
         }
     }
 
@@ -256,19 +254,11 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
     // MARK: share methods
     @IBAction func shareMeme(sender: AnyObject) {
         func generateMemedImage() -> UIImage {
-            // conceal bars
-//            northBar.hidden = true
-//            southBar.hidden = true
-        
             // Render view to an image
             UIGraphicsBeginImageContext(memeView.frame.size)
             memeView.drawViewHierarchyInRect(memeView.frame, afterScreenUpdates: true)
             let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-
-            // restore bars
-//            northBar.hidden = false
-//            southBar.hidden = false
             return memedImage
         }
       
