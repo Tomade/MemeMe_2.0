@@ -172,10 +172,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VwF-AI-O5V" firstAttribute="top" secondItem="dyv-FE-8Nn" secondAttribute="top" id="K4q-cY-eM8"/>
-                            <constraint firstItem="VwF-AI-O5V" firstAttribute="bottom" secondItem="EM2-oA-xrd" secondAttribute="top" constant="49" id="V8s-ll-UI1"/>
-                            <constraint firstItem="VwF-AI-O5V" firstAttribute="leading" secondItem="dyv-FE-8Nn" secondAttribute="leading" id="eao-g2-Di9"/>
-                            <constraint firstAttribute="trailing" secondItem="VwF-AI-O5V" secondAttribute="trailing" id="jwO-qy-7la"/>
+                            <constraint firstAttribute="centerX" secondItem="VwF-AI-O5V" secondAttribute="centerX" id="FcO-UM-BMz"/>
+                            <constraint firstItem="EM2-oA-xrd" firstAttribute="top" secondItem="VwF-AI-O5V" secondAttribute="bottom" constant="-49" id="XQg-GT-5tQ"/>
+                            <constraint firstItem="VwF-AI-O5V" firstAttribute="top" secondItem="X9j-UR-F2i" secondAttribute="bottom" constant="-64" id="q7a-nB-P9b"/>
+                            <constraint firstItem="VwF-AI-O5V" firstAttribute="width" secondItem="dyv-FE-8Nn" secondAttribute="width" id="v51-fi-OWG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RPE-wE-xUQ">
@@ -225,7 +225,7 @@
                                         </constraints>
                                     </scrollView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hEi-jC-ZLl" userLabel="topTextField">
-                                        <rect key="frame" x="281" y="100" width="38" height="20"/>
+                                        <rect key="frame" x="281" y="10" width="38" height="20"/>
                                         <attributedString key="attributedText">
                                             <fragment content="TOP">
                                                 <attributes>
@@ -238,7 +238,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSU-CU-hJ1" userLabel="bottomTextField">
-                                        <rect key="frame" x="262" y="392" width="76" height="20"/>
+                                        <rect key="frame" x="262" y="442" width="76" height="20"/>
                                         <attributedString key="attributedText">
                                             <fragment content="BOTTOM">
                                                 <attributes>
@@ -257,9 +257,9 @@
                                     <constraint firstAttribute="centerX" secondItem="hEi-jC-ZLl" secondAttribute="centerX" id="1oP-rM-gff"/>
                                     <constraint firstAttribute="centerX" secondItem="kSU-CU-hJ1" secondAttribute="centerX" id="4pE-nx-hQH"/>
                                     <constraint firstAttribute="bottom" secondItem="Fbr-f5-wEk" secondAttribute="bottom" id="O8k-r4-O6R"/>
-                                    <constraint firstAttribute="bottom" secondItem="kSU-CU-hJ1" secondAttribute="bottom" constant="100" id="SoQ-G9-3tu"/>
+                                    <constraint firstAttribute="bottom" secondItem="kSU-CU-hJ1" secondAttribute="bottom" constant="50" id="SoQ-G9-3tu"/>
                                     <constraint firstItem="Fbr-f5-wEk" firstAttribute="leading" secondItem="LJ0-yq-3ZC" secondAttribute="leading" id="a7i-vu-Ctg"/>
-                                    <constraint firstItem="hEi-jC-ZLl" firstAttribute="top" secondItem="LJ0-yq-3ZC" secondAttribute="top" constant="100" id="f3j-Qe-Sw1"/>
+                                    <constraint firstItem="hEi-jC-ZLl" firstAttribute="top" secondItem="LJ0-yq-3ZC" secondAttribute="top" constant="10" id="f3j-Qe-Sw1"/>
                                     <constraint firstAttribute="trailing" secondItem="Fbr-f5-wEk" secondAttribute="trailing" id="oHA-jY-UyF"/>
                                 </constraints>
                             </view>
