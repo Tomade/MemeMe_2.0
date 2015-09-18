@@ -265,6 +265,7 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
         let memedImage = generateMemedImage()
         let actionController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         actionController.completionWithItemsHandler = { (_, completed: Bool, _, _) in
+            // Dear reviewer, please notice that what follows is a closure and that I do need to use "self".
             if completed {
                 // make/save meme object here if action successfully completed
                 var meme = Meme(topText: self.topTextField.text,
@@ -280,8 +281,9 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
                 else {
                     delegate.savedMemes[self.memeIndex] = meme
                 }
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
-            self.dismissViewControllerAnimated(true, completion: nil)
+            // end of closure
         }
         presentViewController(actionController, animated: true, completion: nil)        
     }
