@@ -1,6 +1,6 @@
-## MemeMe 1.0
+## MemeMe 2.0
 
-My implementation of the MemeMe project 1.0 for the Udacity iOS Nanodegree.
+My implementation of the MemeMe project 2.0 for the Udacity iOS Nanodegree.
 
 In addition to satisfying the requirements listed in the rubric, we also implement 
 zoom/pan with standard gestures by means of a UIScrollView embedding the UIIMageView.  
