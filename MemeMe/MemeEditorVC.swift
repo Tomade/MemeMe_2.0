@@ -266,6 +266,7 @@ class MemeEditorVC: UIViewController, UIScrollViewDelegate, UIImagePickerControl
         let actionController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         actionController.completionWithItemsHandler = { (_, completed: Bool, _, _) in
             // Dear reviewer, please notice that what follows is a closure and that I do need to use "self".
+            // The reviewer for v.1.0 also got this wrong.
             if completed {
                 // make/save meme object here if action successfully completed
                 var meme = Meme(topText: self.topTextField.text,
