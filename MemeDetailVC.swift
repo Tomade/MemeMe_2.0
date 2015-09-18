@@ -13,6 +13,7 @@ class MemeDetailVC: UIViewController {
     var memeIndex = -1
     @IBOutlet weak var imageView: UIImageView!
     
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.hidden = true
@@ -32,5 +33,11 @@ class MemeDetailVC: UIViewController {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("memeEditor") as! MemeEditorVC
         vc.memeIndex = memeIndex
         presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func deleteMeme(sender: AnyObject) {
+        (UIApplication.sharedApplication().delegate as! AppDelegate).savedMemes.removeAtIndex(memeIndex)
+        navigationController?.popViewControllerAnimated(true)
     }
 }
